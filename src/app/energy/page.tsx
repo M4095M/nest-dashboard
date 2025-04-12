@@ -136,7 +136,7 @@ export default function EnergyDashboard() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* Energy Consumption Summary */}
           <DashboardCard 
-            title="Energy Consumption" 
+            title="Energy Consumption by Fan" 
             icon={<BarChart className="text-green-600" />}
             value={`${dashboardData.energy.current} kWh`}
             trend={dashboardData.energy.current > dashboardData.energy.previous ? 'up' : 'down'}
@@ -169,8 +169,11 @@ export default function EnergyDashboard() {
           {/* Left Column - Energy Consumption Chart */}
           <div className="lg:col-span-2">
             <div className="bg-white rounded-lg shadow-md p-4 h-full">
-              <h2 className="text-xl font-semibold text-green-800 mb-4">Energy Consumption Trend</h2>
+              <h2 className="text-xl font-semibold text-green-800 mb-4">Energy Consumption Trend by Fan</h2>
               <EnergyConsumptionChart data={dashboardData.energy.history} />
+              <div className="m-4 text-sm text-gray-300">
+                Note: the kWh is a scaling of the PMW signal from the fan. The higher the kWh, the more power is consumed by the fan.
+              </div>
             </div>
           </div>
           
